@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Подарок для Верочки ❤️</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    overflow-x:hidden;
+    background:#ff8fab;
+}
+
+/* стартовый экран */
+.start-screen{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:linear-gradient(135deg,#ff8fab,#ffc2d1);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:10;
+}
+
+.open-btn{
+    font-size:24px;
+    padding:20px 35px;
+    border:none;
+    border-radius:40px;
+    background:white;
+    color:#ff4d6d;
+    font-weight:bold;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* основной сайт */
+.main{
+    display:none;
+    text-align:center;
+    color:white;
+}
+
+header{
+    padding:60px 20px 30px;
+}
+
+h1{
+    font-size:32px;
+}
+
+.text{
+    max-width:340px;
+    margin:auto;
+    font-size:18px;
+    line-height:1.6;
+}
+
+/* фотки */
+.photos{
+    padding:30px 10px 60px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    justify-content:center;
+}
+
+.photo{
+    width:250px;
+    height:300px;
+    background:rgba(255,255,255,0.3);
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:13px;
+}
+
+/* сердечки */
+.heart{
+    position:fixed;
+    top:-20px;
+    font-size:20px;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- экран с кнопкой -->
+<div class="start-screen" id="start">
+    <button class="open-btn" onclick="openGift()">Открыть подарок ❤️</button>
+</div>
+
+<!-- основной сайт -->
+<div class="main" id="main">
+
+<header>
+    <h1>С 14 февраля, Верочка ❤️</h1>
+    <p class="text">
+        Это маленький сайт для тебя моя любимая, просто чтобы ты улыбнулась  
+        Спасибо тебе за нас и вообще за все, я тебя очень люблю и ценю, котеночек
+    </p>
+</header>
+
+<section>
+    <h2>Наши фоточки</h2>
+
+    <div class="photos">
+
+       <img src="images/1.jpg" class="photo">
+<img src="images/2.jpg" class="photo">
+<img src="images/3.jpg" class="photo">
+<img src="images/4.jpg" class="photo">
+
+    </div>
+</section>
+
+<section>
+    <p class="text">
+        Я рядом моя любимая и буду всю жизнь, ты для меня очень важна  
+        и я хочу, чтобы у нас всё было хорошо и
+        сейчас и в будущем.
+    </p>
+</section>
+
+<br><br>
+<p>Твой бабуинчик ❤️</p>
+<br><br>
+
+</div>
+
+<script>
+function openGift(){
+    document.getElementById("start").style.display="none";
+    document.getElementById("main").style.display="block";
+    startHearts();
+}
+
+/* падающие сердца */
+function startHearts(){
+    setInterval(()=>{
+        const heart=document.createElement("div");
+        heart.className="heart";
+        heart.innerHTML="❤️";
+        heart.style.left=Math.random()*100+"vw";
+        heart.style.animationDuration=(3+Math.random()*3)+"s";
+        document.body.appendChild(heart);
+
+        setTimeout(()=>heart.remove(),6000);
+    },300);
+}
+</script>
+
+</body>
+</html>
